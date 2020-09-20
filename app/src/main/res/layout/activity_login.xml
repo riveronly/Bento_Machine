@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#64878B">
+
+    <RelativeLayout
+        android:id="@+id/relativelayoutview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/login_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@mipmap/bento_box"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="70dp" />
+
+        <TextView
+            android:id="@+id/loginErrtext"
+            android:layout_below="@id/login_image"
+            android:layout_margin="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/login_image"
+            android:layout_centerHorizontal="true"
+            android:gravity="center" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/password"
+            android:digits="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:hint="用户名"
+            android:maxLength="10"
+            android:minLines="6"
+            app:met_clearButton="true"
+            app:met_floatingLabel="normal"
+            app:met_helperText="小于10位"
+            app:met_singleLineEllipsis="true" />
+
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/password"
+            android:layout_centerInParent="true"
+            android:hint="密码"
+            android:maxLength="16"
+            android:minLines="6"
+            android:password="true"
+            app:met_helperText="小于16位"
+            app:met_clearButton="true"
+            app:met_floatingLabel="normal"
+            app:met_singleLineEllipsis="true"
+            tools:ignore="Deprecated" />
+
+
+
+            <TextView
+                android:id="@+id/newaccountc"
+                android:clickable="true"
+                android:layout_centerInParent="true"
+                android:layout_alignParentBottom="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="30dp"
+                android:text="注册新用户>" />
+
+            <Button
+                android:id="@+id/loginbuttom"
+                android:layout_centerInParent="true"
+                android:layout_margin="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/password"
+                android:text="登陆" />
+
+
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

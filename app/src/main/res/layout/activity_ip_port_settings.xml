@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".IP_Port_Activity.Ip_Port_Settings">
+
+    <TextView
+        android:id="@+id/msg_default_ip_port"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="100dp" />
+
+    <TextView
+        android:layout_centerInParent="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="50dp"
+        android:text="重启软件生效"
+        android:textSize="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/msg_ip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/msg_port"
+        android:layout_centerInParent="true"
+        android:layout_margin="10dp"
+        android:hint="ip地址" />
+
+    <EditText
+        android:id="@+id/msg_port"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/main_bt"
+        android:layout_centerInParent="true"
+        android:layout_margin="10dp"
+        android:hint="端口"
+        tools:ignore="TextFields" />
+
+    <Button
+        android:id="@+id/main_bt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="10dp"
+        android:text="@string/app_name" />
+
+
+</RelativeLayout>

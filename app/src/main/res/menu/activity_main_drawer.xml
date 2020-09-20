@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_pay"
+            android:icon="@mipmap/pay2"
+            android:title="@string/menu_pay" />
+        <item
+            android:id="@+id/nav_settle"
+            android:icon="@mipmap/settle"
+            android:title="@string/menu_settle" />
+    </group>
+
+    <item android:title="用户相关">
+        <menu>
+            <item
+                android:icon="@mipmap/faceid"
+                android:id="@+id/nav_faceId"
+                android:title="@string/menu_faceid" />
+
+
+
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@mipmap/logout"
+                android:title="@string/menu_logout" />
+        </menu>
+    </item>
+
+
+    <item android:title="开发者工具">
+        <menu>
+            <item
+                android:id="@+id/nav_ip"
+                android:icon="@mipmap/ip"
+                android:title="@string/menu_ip" />
+        </menu>
+    </item>
+
+
+</menu>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="paintings_years">
+        <item>1889</item>
+        <item>1888</item>
+        <item>1888</item>
+        <item>1888</item>
+    </string-array>
+
+    <string-array name="paintings_locations">
+        <item>拉面（外文名：Lamian Noodles [1]  ）又叫甩面、扯面、抻面，是中国北方城乡独具地方风味的一种传统面食，民间相传因山东福山抻面驰名，有起源福山拉面一说。后来演化成多种口味的著名美食如兰州牛肉面、山西拉面、河南拉面，龙须面等。</item>
+        <item>火锅(英语：Hot Pot [1]  )，古称“古董羹”，因食物投入沸水时发出的“咕咚”声而得名，它是中国独创的美食，历史悠久，是一种老少皆宜的食物。</item>
+        <item>章鱼烧 [1]  ，起源于日本大阪，原名“タコ焼き(蛸焼)” [2]  ，又名章鱼小丸子，成份主要是章鱼、章鱼烧粉、柴鱼片、海苔、沙拉酱、章鱼烧酱等。</item>
+        <item>叉烧饭是一道色香味俱全的特色名点，属于粤菜系。在中国粤港澳台地区以及新加坡和马来西亚等海外地区的茶餐厅、酒楼及港式快餐店常见的食品，是叉烧加叉烧汁或酱油盖住一碗或一碟白饭而成。广东菜讲究原料，材料的新鲜，口味上比较清淡，也比较讲究养生。</item>
+    </string-array>
+
+    <array name="paintings_images">
+        <item>@drawable/lamian_noodles</item>
+        <item>@drawable/hot_pot</item>
+        <item>@drawable/octopus_pellets</item>
+        <item>@drawable/roas_pork_fried_rice</item>
+
+    </array>
+
+    <string-array name="paintings_titles">
+        <item>拉面‍</item>
+        <item>火锅</item>
+        <item>章鱼烧</item>
+        <item>叉烧饭</item>
+
+    </string-array>
+
+</resources>

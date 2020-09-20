@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   >
+
+
+    <RelativeLayout
+        android:id="@+id/rellayoutview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+       >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="19dp"
+            />
+
+        <TextView
+            android:id="@+id/Enroll_tipText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/Enraccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="136dp"
+            android:digits="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:hint="用户名"
+            android:maxLength="10"
+            android:minLines="5"
+            app:met_clearButton="true"
+            app:met_helperText="数字及字母且不超过10位"
+            app:met_singleLineEllipsis="true" />
+
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/Enrpassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/Enraccount"
+            android:layout_below="@+id/Enraccount"
+            android:hint="密码"
+            android:minLines="6"
+            app:met_helperText="大于6位小于16位"
+            android:maxLength="16"
+            android:password="true"
+            app:met_clearButton="true"
+            app:met_singleLineEllipsis="true" />
+
+        <ImageView
+            android:id="@+id/EnrPic"
+            android:visibility="gone"
+            android:clickable="true"
+            android:src="@drawable/upload_img"
+            android:layout_margin="100dp"
+            android:layout_below="@id/Enrpassword"
+            android:layout_above="@id/EnrollButtom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+        <Button
+            android:id="@+id/EnrollButtom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="24dp"
+            android:text="注册" />
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

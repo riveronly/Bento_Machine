@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PayAcitvity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ImageView
+            android:src="@mipmap/pay_wx"
+            android:id="@+id/pay_wx_bt"
+            android:layout_width="150sp"
+            android:layout_height="150sp"
+            android:layout_above="@id/line"
+            android:layout_centerInParent="true"
+            android:layout_margin="30sp"
+            android:text="微信支付" />
+
+        <View
+            android:id="@+id/line"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp" />
+
+        <ImageView
+            android:src="@mipmap/pay_zfb"
+            android:layout_margin="30sp"
+            android:layout_below="@id/line"
+            android:id="@+id/pay_zfb_bt"
+            android:layout_width="150sp"
+            android:layout_height="150sp"
+            android:layout_centerInParent="true"
+            android:text="支付宝支付" />
+
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
