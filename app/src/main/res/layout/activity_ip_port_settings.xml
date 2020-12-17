@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".IP_Port_Activity.Ip_Port_Settings">
+    tools:context=".activity.Ip_Port_Settings">
 
     <TextView
         android:id="@+id/msg_default_ip_port"

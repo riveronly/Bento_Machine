@@ -120,7 +120,7 @@
 
                 </LinearLayout>
 
-                <com.soulocean.bento_machine_c.PublicApi.UnfoldableView
+                <com.soulocean.bento_machine_c.foldablelayoutapi.UnfoldableView
                     android:id="@+id/unfoldable_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
