@@ -12,6 +12,9 @@ import java.io.OutputStream;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
 
+/**
+ * @author soulo
+ */
 public class ClientThread implements Runnable {
     private Socket s;
     // 定义向UI线程发送消息的Handler对象

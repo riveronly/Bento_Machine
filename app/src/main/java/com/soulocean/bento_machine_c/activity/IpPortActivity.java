@@ -19,35 +19,43 @@ import com.soulocean.bento_machine_c.R;
 /**
  * @author soulo
  */
-public class Ip_Port_Settings extends AppCompatActivity {
+public class IpPortActivity extends AppCompatActivity {
+
+    private SharedPreferences.Editor editor;
+
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ip_port_settings);
 
+        //获取actionbar
         final ActionBar actionBar = getSupportActionBar();
         assert actionBar != null;
-        actionBar.setDisplayHomeAsUpEnabled(true);
-//        actionBar.setHomeAsUpIndicator(R.drawable.ic_home_black_24dp); //设置menu键得图标
-        SharedPreferences shp = getSharedPreferences("ip_port", Context.MODE_PRIVATE);
-        final SharedPreferences.Editor editor = shp.edit();
 
-        TextView msg_default_ip_port = findViewById(R.id.msg_default_ip_port);
-        msg_default_ip_port.setTextSize(30);
+        //设置返回主界面按钮，#注2
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
+        TextView msgDefaultIpPort = findViewById(R.id.msg_default_ip_port);
+        Button button = findViewById(R.id.main_bt);
+
+        //打开应用中存储型如map格式数据的xml文件
+        SharedPreferences shp = getSharedPreferences("ip_port", Context.MODE_PRIVATE);
+        //从SharedPreferences中获取编辑editor
+        editor = shp.edit();
+        //从SharedPreferences中获取存储的数据
         String ip = shp.getString("ip_string", "");
         String port = shp.getString("port_string", "");
-        msg_default_ip_port.setText("ip:" + ip + "\n" + "port:" + port);
+        msgDefaultIpPort.setText("ip:" + ip + "\n" + "port:" + port);
 
-        Button button = findViewById(R.id.main_bt);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 EditText ip = findViewById(R.id.msg_ip);
                 EditText port = findViewById(R.id.msg_port);
-                Intent intent = new Intent(Ip_Port_Settings.this, UnfoldableDetailsActivity.class);
+                Intent intent = new Intent(IpPortActivity.this, UnfoldableDetailsActivity.class);
                 if (ip != null && ip.length() > 0) {
+                    //将输入的IP和port存储
                     editor.putString("ip_string", ip.getText().toString());
                     editor.putString("port_string", port.getText().toString());
                     editor.apply();
@@ -58,10 +66,17 @@ public class Ip_Port_Settings extends AppCompatActivity {
         });
     }
 
+    /**
+     * #注2
+     * 当actionbar中的按钮被点击时的响应
+     *
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            Intent intent = new Intent(Ip_Port_Settings.this, UnfoldableDetailsActivity.class);
+            Intent intent = new Intent(IpPortActivity.this, UnfoldableDetailsActivity.class);
             startActivity(intent);
             finish();
         }

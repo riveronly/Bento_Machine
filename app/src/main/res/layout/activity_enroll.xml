@@ -63,13 +63,13 @@
             android:src="@drawable/upload_img"
             android:layout_margin="100dp"
             android:layout_below="@id/Enrpassword"
-            android:layout_above="@id/EnrollButtom"
+            android:layout_above="@id/EnrollButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
 
         <Button
-            android:id="@+id/EnrollButtom"
+            android:id="@+id/EnrollButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"

@@ -28,7 +28,6 @@ public class Painting {
         String[] years = res.getStringArray(R.array.paintings_years);
         String[] locations = res.getStringArray(R.array.paintings_locations);
         TypedArray images = res.obtainTypedArray(R.array.paintings_images);
-
         int size = titles.length;
         Painting[] paintings = new Painting[size];
 
@@ -38,7 +37,6 @@ public class Painting {
         }
 
         images.recycle();
-
         return paintings;
     }
 

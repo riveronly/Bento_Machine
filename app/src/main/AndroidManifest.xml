@@ -23,7 +23,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="q"
        >
-        <activity android:name=".activity.PayAcitvity" />
+        <activity android:name=".activity.PayActivity" />
         <activity android:name=".activity.LoginActivity"
             tools:ignore="InnerclassSeparator">
         </activity>
@@ -44,7 +44,7 @@
                 <data android:mimeType="text/plain" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.Ip_Port_Settings"
+        <activity android:name=".activity.IpPortActivity"
             tools:ignore="InnerclassSeparator" />
         <activity android:name=".activity.FaceIDActivity"
             tools:ignore="InnerclassSeparator" />

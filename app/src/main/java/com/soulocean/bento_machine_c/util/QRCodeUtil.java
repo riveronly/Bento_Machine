@@ -16,22 +16,16 @@ import java.util.Map;
 
 /**
  * 二维码生成工具类
- *
  */
 public class QRCodeUtil {
     /**
      * 生成二维码Bitmap
      *
-     * @param content
-     *            内容
-     * @param widthPix
-     *            图片宽度
-     * @param heightPix
-     *            图片高度
-     * @param logoBm
-     *            二维码中心的Logo图标（可以为null）
-     * @param filePath
-     *            用于存储二维码图片的文件路径
+     * @param content   内容
+     * @param widthPix  图片宽度
+     * @param heightPix 图片高度
+     * @param logoBm    二维码中心的Logo图标（可以为null）
+     * @param filePath  用于存储二维码图片的文件路径
      * @return 生成二维码及保存文件是否成功
      */
     public static Bitmap createQRImage(String content, int widthPix, int heightPix, Bitmap logoBm, String filePath) {
@@ -46,7 +40,6 @@ public class QRCodeUtil {
             hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);
             // 设置空白边距的宽度
             hints.put(EncodeHintType.MARGIN, 0);
-
 
             // 图像数据转换，使用了矩阵转换
             BitMatrix bitMatrix = new QRCodeWriter().encode(content, BarcodeFormat.QR_CODE, widthPix, heightPix, hints);
@@ -70,18 +63,15 @@ public class QRCodeUtil {
             if (logoBm != null) {
                 bitmap = addLogo(bitmap, logoBm);
             }
-
             if (filePath == null) {
                 return bitmap;
             }
-
             // 必须使用compress方法将bitmap保存到文件中再进行读取。直接返回的bitmap是没有任何压缩的，内存消耗巨大！
             if (bitmap != null && bitmap.compress(Bitmap.CompressFormat.JPEG, 100, new FileOutputStream(filePath)))
                 return BitmapFactory.decodeFile(filePath);
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return null;
     }
 
@@ -92,11 +82,9 @@ public class QRCodeUtil {
         if (src == null) {
             return null;
         }
-
         if (logo == null) {
             return src;
         }
-
         // 获取图片的宽高
         int srcWidth = src.getWidth();
         int srcHeight = src.getHeight();
@@ -110,7 +98,6 @@ public class QRCodeUtil {
         if (logoWidth == 0 || logoHeight == 0) {
             return src;
         }
-
         // logo大小为二维码整体大小的1/5
         float scaleFactor = srcWidth * 1.0f / 5 / logoWidth;
         Bitmap bitmap = Bitmap.createBitmap(srcWidth, srcHeight, Bitmap.Config.ARGB_8888);
@@ -127,5 +114,4 @@ public class QRCodeUtil {
         }
         return bitmap;
     }
-
 }

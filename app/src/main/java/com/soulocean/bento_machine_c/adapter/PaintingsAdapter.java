@@ -9,13 +9,13 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.soulocean.bento_machine_c.R;
+import com.soulocean.bento_machine_c.activity.UnfoldableDetailsActivity;
+import com.soulocean.bento_machine_c.entity.Painting;
 import com.soulocean.bento_machine_c.foldablelayoutapi.ContextHelper;
 import com.soulocean.bento_machine_c.foldablelayoutapi.GlideHelper;
 import com.soulocean.bento_machine_c.foldablelayoutapi.ItemsAdapter;
 import com.soulocean.bento_machine_c.foldablelayoutapi.Views;
-import com.soulocean.bento_machine_c.R;
-import com.soulocean.bento_machine_c.activity.UnfoldableDetailsActivity;
-import com.soulocean.bento_machine_c.entity.Painting;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,22 +23,21 @@ import java.util.List;
 
 
 /**
+ * 折叠视图的适配器，用来设定视图布局和绑定数据
  * @author soulo
  */
 public class PaintingsAdapter extends ItemsAdapter<Painting, PaintingsAdapter.ViewHolder> {
 
-
+    private final List<Integer> lists = new ArrayList<>();
     private OnItemClickLitener mOnItemClickLitener;
     private OnItemlongLitener mOnlongClickListener;
     private String ip, port;
-    private List<Integer> lists = new ArrayList<>();
-
 
     public PaintingsAdapter(Context context) {
         setItemsList(Arrays.asList(Painting.getAllPaintings(context.getResources())));
     }
 
-    public void setIpandPort(String ip, String port) {
+    public void setIpAndPort(String ip, String port) {
         this.ip = ip;
         this.port = port;
     }
@@ -66,27 +65,21 @@ public class PaintingsAdapter extends ItemsAdapter<Painting, PaintingsAdapter.Vi
         holder.image.setTag(R.id.list_item_image, item);
         GlideHelper.loadPaintingImage(holder.image, item);
         holder.title.setText(item.getTitle());
-
-
-        for (int i = 0;i<4;i++)
-        {
-            lists.add(i,0);
+        for (int i = 0; i < 4; i++) {
+            lists.add(i, 0);
         }
-
         holder.image.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 mOnItemClickLitener.onItemClick(holder.itemView, position);
                 if (holder.checkBox.isChecked()) {
                     holder.checkBox.setChecked(false);
-                    lists.set(position,0);
-                }else {
+                    lists.set(position, 0);
+                } else {
                     holder.checkBox.setChecked(true);
-                    lists.set(position,1);
+                    lists.set(position, 1);
                 }
-
             }
-
         });
 
         if (mOnlongClickListener != null) {
@@ -118,7 +111,6 @@ public class PaintingsAdapter extends ItemsAdapter<Painting, PaintingsAdapter.Vi
         void onItemlongClick(View view, int position);
     }
 
-
     static class ViewHolder extends ItemsAdapter.ViewHolder {
         final ImageView image;
         final TextView title;
@@ -132,6 +124,4 @@ public class PaintingsAdapter extends ItemsAdapter<Painting, PaintingsAdapter.Vi
             title = Views.find(itemView, R.id.list_item_title);
         }
     }
-
-
 }

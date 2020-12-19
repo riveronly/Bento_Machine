@@ -1,22 +1,27 @@
 package com.soulocean.bento_machine_c.util;
 
 import com.baidu.aip.face.AipFace;
+
 import org.json.JSONObject;
+
 import java.util.HashMap;
 
+/**
+ * 百度人脸识别工具类，不可更改类名
+ * @author soulo
+ */
 public class Sample {
-    /**
-     * 设置APPID/AK/SK
-     *
-     */
+
     public static final String APP_ID = "17543177";
     public static final String API_KEY = "8CGIWOp3FG7efnb8yGhXvejZ";
     public static final String SECRET_KEY = "3t6jvHhGOvQxCgDaSiczsgoCPhIgxzry";
-    public static AipFace client= null;
+    public static AipFace client = null;
+
     static {
-         client = new AipFace(APP_ID, API_KEY, SECRET_KEY);
+        client = new AipFace(APP_ID, API_KEY, SECRET_KEY);
     }
-    public static String uploadFace(String imagebase,String username) {
+
+    public static String uploadFace(String imagebase, String username) {
 
 
         HashMap<String, String> options = new HashMap<String, String>();
@@ -30,15 +35,12 @@ public class Sample {
 
         // 人脸注册
         JSONObject res = client.addUser(image, imageType, groupId, userId, options);
-        try{
-            if(res.toString(2).indexOf("SUCCESS")!=-1){
+        try {
+            if (res.toString(2).indexOf("SUCCESS") != -1) {
                 return "success";
             }
-        }catch (Exception ignored){
-
+        } catch (Exception ignored) {
         }
         return "failed";
     }
-
-
 }

@@ -16,37 +16,24 @@ import androidx.core.content.ContextCompat;
 
 import com.soulocean.bento_machine_c.R;
 
-/*使用方法
- NotificationChannel notificationCannel =new NotificationChannel(this);
-         notificationCannel.CreateNotificationChannel();
-         notificationCannel.sendChatMsg("111");
-         notificationCannel.sendSubscribeMsg("222");
-         */
 /**
+ *通知消息工具类
  * @author soulo
  */
 public class NotificationChannel extends ContextWrapper {
-
 
     public NotificationChannel(Context base) {
         super(base);
     }
 
     public void createNotificationChannel() {
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             String channelId = "chat";
             String channelName = "聊天消息";
             int importance = NotificationManager.IMPORTANCE_MAX;
             createNotificationChannel(channelId, channelName, importance);
-
-        /*    channelId = "subscribe";
-            channelName = "订阅消息";
-            importance = NotificationManager.IMPORTANCE_DEFAULT;
-            createNotificationChannel(channelId, channelName, importance);*/
         }
     }
-
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void createNotificationChannel(String channelId, String channelName, int importance) {

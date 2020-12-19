@@ -3,8 +3,11 @@ package com.soulocean.bento_machine_c.entity;
 
 import cn.bmob.v3.BmobUser;
 
-public class User_Pic extends BmobUser {
-    private String name;//用户名
+/**
+ * @author soulo
+ */
+public class User extends BmobUser {
+    private String name;
     private Object User_pic;
 
     public String getName() {

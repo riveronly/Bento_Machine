@@ -22,16 +22,16 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
-import com.soulocean.bento_machine_c.entity.User_Pic;
+import com.soulocean.bento_machine_c.R;
+import com.soulocean.bento_machine_c.adapter.PaintingsAdapter;
+import com.soulocean.bento_machine_c.entity.Painting;
+import com.soulocean.bento_machine_c.entity.User;
 import com.soulocean.bento_machine_c.foldablelayoutapi.BaseActivity;
 import com.soulocean.bento_machine_c.foldablelayoutapi.GlideHelper;
 import com.soulocean.bento_machine_c.foldablelayoutapi.SpannableBuilder;
 import com.soulocean.bento_machine_c.foldablelayoutapi.UnfoldableView;
 import com.soulocean.bento_machine_c.foldablelayoutapi.Views;
 import com.soulocean.bento_machine_c.foldablelayoutapi.shading.GlanceFoldShading;
-import com.soulocean.bento_machine_c.R;
-import com.soulocean.bento_machine_c.entity.Painting;
-import com.soulocean.bento_machine_c.adapter.PaintingsAdapter;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -39,6 +39,10 @@ import java.util.List;
 
 import cn.bmob.v3.BmobUser;
 
+/**
+ * 主界面，可折叠布局
+ * @author soulo
+ */
 public class UnfoldableDetailsActivity extends BaseActivity {
 
     @SuppressLint("StaticFieldLeak")
@@ -64,45 +68,34 @@ public class UnfoldableDetailsActivity extends BaseActivity {
         paintingsAdapter.setOnItemClickLitener(new PaintingsAdapter.OnItemClickLitener() {
             @Override
             public void onItemClick(View view, int position) {
-                // Toast.makeText(getApplicationContext(), "" + position, Toast.LENGTH_SHORT).show();
             }
         });
-
 
         paintingsAdapter.setOnItemlongClickListener(new PaintingsAdapter.OnItemlongLitener() {
             @Override
             public void onItemlongClick(View view, int position) {
-                //  Toast.makeText(getApplicationContext(), "long:" + position, Toast.LENGTH_SHORT).show();
             }
         });
 
+        //初始化折叠动画
         listView.setAdapter(paintingsAdapter);
-
-
-        Init_UnfoldView();//初始化折叠动画
+        Init_UnfoldView();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         final ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setDisplayHomeAsUpEnabled(true);
-//        actionBar.setHomeAsUpIndicator(R.drawable.ic_dashboard_black_24dp); //设置menu键得图标
-
 
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
-
-
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.nav_ip:
-                        Intent toMain = new Intent(UnfoldableDetailsActivity.this, Ip_Port_Settings.class);
+                        Intent toMain = new Intent(UnfoldableDetailsActivity.this, IpPortActivity.class);
                         startActivity(toMain);
                         break;
-
                     case R.id.nav_pay:
                         if (!currentPay) {
                             for (int i = 0; i < listc.size(); i++) {
@@ -112,7 +105,7 @@ public class UnfoldableDetailsActivity extends BaseActivity {
                                 }
                             }
                             if (currentPay) {
-                                Intent toPay = new Intent(UnfoldableDetailsActivity.this, PayAcitvity.class);
+                                Intent toPay = new Intent(UnfoldableDetailsActivity.this, PayActivity.class);
                                 startActivity(toPay);
                             } else {
                                 Toast.makeText(getApplicationContext(), "您还未选择菜品", Toast.LENGTH_SHORT).show();
@@ -122,7 +115,6 @@ public class UnfoldableDetailsActivity extends BaseActivity {
                             Toast.makeText(getApplicationContext(), "您已经支付完成", Toast.LENGTH_SHORT).show();
                             drawer.closeDrawer(GravityCompat.START);
                         }
-
                         break;
                     case R.id.nav_settle:
                         if (currentPay) {
@@ -139,69 +131,53 @@ public class UnfoldableDetailsActivity extends BaseActivity {
                         }
                         break;
                     case R.id.nav_faceId:
-
                         Intent toface = new Intent(UnfoldableDetailsActivity.this, FaceIDActivity.class);
                         startActivity(toface);
                         break;
-
                     case R.id.nav_logout:
                         BmobUser.logOut();
                         Intent toLogin = new Intent(UnfoldableDetailsActivity.this, LoginActivity.class);
                         startActivity(toLogin);
                         finish();
                         break;
-
-
+                    default:
                 }
                 drawer.closeDrawers();
                 return false;
-
             }
         });
-
-
-        View HeadView = navigationView.getHeaderView(0);
-        TextView username = HeadView.findViewById(R.id.nav_header_username);
-        ImageView userpic = HeadView.findViewById(R.id.nav_header_userpic);
-
-
-        User_Pic user = User_Pic.getCurrentUser(User_Pic.class);
-
+        View headView = navigationView.getHeaderView(0);
+        TextView userName = headView.findViewById(R.id.nav_header_username);
+        ImageView userPic = headView.findViewById(R.id.nav_header_userpic);
+        User user = User.getCurrentUser(User.class);
         String name = user.getUsername();
         if (name != null) {
-            username.setText(name);
+            userName.setText(name);
         }
-
         String pic64 = (String) user.getUser_pic();
         if (pic64 != null && pic64.length() > 1) {
             //base64解码
             String str2 = new String(Base64.decode(pic64.getBytes(), Base64.DEFAULT));
-            userpic.setImageURI(Uri.fromFile(new File(str2)));
+            userPic.setImageURI(Uri.fromFile(new File(str2)));
         }
-
-
         Toast.makeText(getApplicationContext(), "欢迎 " + name, Toast.LENGTH_SHORT).show();
-
-
     }
 
     public List<Integer> getLists() {
         return listc;
     }
 
+    /**
+     * 初始化折叠视图
+     */
     private void Init_UnfoldView() {
         listTouchInterceptor = Views.find(this, R.id.touch_interceptor_view);
         listTouchInterceptor.setClickable(false);
-
         detailsLayout = Views.find(this, R.id.details_layout);
         detailsLayout.setVisibility(View.INVISIBLE);
-
         unfoldableView = Views.find(this, R.id.unfoldable_view);
-
         Bitmap glance = BitmapFactory.decodeResource(getResources(), R.drawable.unfold_glance);
         unfoldableView.setFoldShading(new GlanceFoldShading(glance));
-
-
         unfoldableView.setOnFoldingListener(new UnfoldableView.SimpleFoldingListener() {
             @Override
             public void onUnfolding(UnfoldableView unfoldableView) {
@@ -243,7 +219,6 @@ public class UnfoldableDetailsActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-
         // 返回键: 折叠开着就将其关闭
         if (unfoldableView != null
                 && (unfoldableView.isUnfolded() || unfoldableView.isUnfolding())) {
@@ -257,10 +232,13 @@ public class UnfoldableDetailsActivity extends BaseActivity {
         else {
             super.onBackPressed();
         }
-
-
     }
 
+    /**
+     * 打开折叠布局后的详细界面初始化
+     * @param coverView
+     * @param painting
+     */
     public void openDetails(View coverView, Painting painting) {
         final ImageView image = Views.find(detailsLayout, R.id.details_image);
         final TextView title = Views.find(detailsLayout, R.id.details_title);
@@ -282,8 +260,6 @@ public class UnfoldableDetailsActivity extends BaseActivity {
                 .append(painting.getLocation());
         //;
         description.setText(builder.build());
-
         unfoldableView.unfold(coverView, detailsLayout);
     }
-
 }
