@@ -51,7 +51,7 @@ public class UnfoldDetailsActivity extends BaseActivity {
     private View detailsLayout;
     private UnfoldableView unfoldableView;
     private DrawerLayout drawer;
-    private List<Integer> listc = new ArrayList<>();
+    private List<Integer> dataList = new ArrayList<>();
     private boolean currentSettle = false;
     private boolean currentPay = false;
 
@@ -63,7 +63,7 @@ public class UnfoldDetailsActivity extends BaseActivity {
         instance = this;
         ListView listView = Views.find(this, R.id.list_view);
         PaintingsAdapter paintingsAdapter = new PaintingsAdapter(this);
-        listc = paintingsAdapter.getLists();
+        dataList = paintingsAdapter.getLists();
 
         paintingsAdapter.setOnItemClickLitener(new PaintingsAdapter.OnItemClickLitener() {
             @Override
@@ -98,8 +98,8 @@ public class UnfoldDetailsActivity extends BaseActivity {
                         break;
                     case R.id.nav_pay:
                         if (!currentPay) {
-                            for (int i = 0; i < listc.size(); i++) {
-                                if (listc.get(i).equals(1)) {
+                            for (int i = 0; i < dataList.size(); i++) {
+                                if (dataList.get(i).equals(1)) {
                                     currentPay = true;
                                     break;
                                 }
@@ -164,7 +164,7 @@ public class UnfoldDetailsActivity extends BaseActivity {
     }
 
     public List<Integer> getLists() {
-        return listc;
+        return dataList;
     }
 
     /**
