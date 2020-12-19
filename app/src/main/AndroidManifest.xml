@@ -49,7 +49,7 @@
         <activity android:name=".activity.FaceIDActivity"
             tools:ignore="InnerclassSeparator" />
         <activity
-            android:name=".activity.UnfoldableDetailsActivity"
+            android:name=".activity.UnfoldDetailsActivity"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme.NoActionBar"
             tools:ignore="InnerclassSeparator" />

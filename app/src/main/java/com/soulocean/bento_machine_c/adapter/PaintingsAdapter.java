@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.soulocean.bento_machine_c.R;
-import com.soulocean.bento_machine_c.activity.UnfoldableDetailsActivity;
+import com.soulocean.bento_machine_c.activity.UnfoldDetailsActivity;
 import com.soulocean.bento_machine_c.entity.Painting;
 import com.soulocean.bento_machine_c.foldablelayoutapi.ContextHelper;
 import com.soulocean.bento_machine_c.foldablelayoutapi.GlideHelper;
@@ -89,8 +89,8 @@ public class PaintingsAdapter extends ItemsAdapter<Painting, PaintingsAdapter.Vi
                     mOnlongClickListener.onItemlongClick(holder.itemView, position);
                     final Painting item = (Painting) v.getTag(R.id.list_item_image);
                     final Activity activity = ContextHelper.asActivity(v.getContext());
-                    if (activity instanceof UnfoldableDetailsActivity) {
-                        ((UnfoldableDetailsActivity) activity).openDetails(v, item);
+                    if (activity instanceof UnfoldDetailsActivity) {
+                        ((UnfoldDetailsActivity) activity).openDetails(v, item);
                     }
                     return true;
                 }

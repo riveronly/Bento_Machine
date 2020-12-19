@@ -66,7 +66,7 @@ public class PayActivity extends AppCompatActivity {
         new Thread(clientThread).start();
 
         String[] foodNames = new String[]{"拉面", "火锅", "章鱼烧", "叉烧饭"};
-        List<Integer> listx = UnfoldableDetailsActivity.instance.getLists();
+        List<Integer> listx = UnfoldDetailsActivity.instance.getLists();
 
         int s = 0;
         String msgstring = name + "_";
@@ -150,7 +150,7 @@ public class PayActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            Intent intent = new Intent(PayActivity.this, UnfoldableDetailsActivity.class);
+            Intent intent = new Intent(PayActivity.this, UnfoldDetailsActivity.class);
             startActivity(intent);
             finish();
         }

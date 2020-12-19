@@ -53,7 +53,7 @@ public class IpPortActivity extends AppCompatActivity {
             public void onClick(View v) {
                 EditText ip = findViewById(R.id.msg_ip);
                 EditText port = findViewById(R.id.msg_port);
-                Intent intent = new Intent(IpPortActivity.this, UnfoldableDetailsActivity.class);
+                Intent intent = new Intent(IpPortActivity.this, UnfoldDetailsActivity.class);
                 if (ip != null && ip.length() > 0) {
                     //将输入的IP和port存储
                     editor.putString("ip_string", ip.getText().toString());
@@ -76,7 +76,7 @@ public class IpPortActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            Intent intent = new Intent(IpPortActivity.this, UnfoldableDetailsActivity.class);
+            Intent intent = new Intent(IpPortActivity.this, UnfoldDetailsActivity.class);
             startActivity(intent);
             finish();
         }

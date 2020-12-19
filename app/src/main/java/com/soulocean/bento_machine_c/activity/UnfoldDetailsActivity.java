@@ -43,10 +43,10 @@ import cn.bmob.v3.BmobUser;
  * 主界面，可折叠布局
  * @author soulo
  */
-public class UnfoldableDetailsActivity extends BaseActivity {
+public class UnfoldDetailsActivity extends BaseActivity {
 
     @SuppressLint("StaticFieldLeak")
-    public static UnfoldableDetailsActivity instance = null;
+    public static UnfoldDetailsActivity instance = null;
     private View listTouchInterceptor;
     private View detailsLayout;
     private UnfoldableView unfoldableView;
@@ -93,7 +93,7 @@ public class UnfoldableDetailsActivity extends BaseActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.nav_ip:
-                        Intent toMain = new Intent(UnfoldableDetailsActivity.this, IpPortActivity.class);
+                        Intent toMain = new Intent(UnfoldDetailsActivity.this, IpPortActivity.class);
                         startActivity(toMain);
                         break;
                     case R.id.nav_pay:
@@ -105,7 +105,7 @@ public class UnfoldableDetailsActivity extends BaseActivity {
                                 }
                             }
                             if (currentPay) {
-                                Intent toPay = new Intent(UnfoldableDetailsActivity.this, PayActivity.class);
+                                Intent toPay = new Intent(UnfoldDetailsActivity.this, PayActivity.class);
                                 startActivity(toPay);
                             } else {
                                 Toast.makeText(getApplicationContext(), "您还未选择菜品", Toast.LENGTH_SHORT).show();
@@ -122,7 +122,7 @@ public class UnfoldableDetailsActivity extends BaseActivity {
                         }
                         if (currentSettle) {
                             currentSettle = false;
-                            Intent toSettle = new Intent(UnfoldableDetailsActivity.this, SettleActivity.class);
+                            Intent toSettle = new Intent(UnfoldDetailsActivity.this, SettleActivity.class);
                             startActivity(toSettle);
                             currentPay = false;
                         } else {
@@ -131,12 +131,12 @@ public class UnfoldableDetailsActivity extends BaseActivity {
                         }
                         break;
                     case R.id.nav_faceId:
-                        Intent toface = new Intent(UnfoldableDetailsActivity.this, FaceIDActivity.class);
+                        Intent toface = new Intent(UnfoldDetailsActivity.this, FaceIDActivity.class);
                         startActivity(toface);
                         break;
                     case R.id.nav_logout:
                         BmobUser.logOut();
-                        Intent toLogin = new Intent(UnfoldableDetailsActivity.this, LoginActivity.class);
+                        Intent toLogin = new Intent(UnfoldDetailsActivity.this, LoginActivity.class);
                         startActivity(toLogin);
                         finish();
                         break;

@@ -76,7 +76,7 @@ public class SettleActivity extends AppCompatActivity {
 
 
 
-        List<Integer> listx = UnfoldableDetailsActivity.instance.getLists();
+        List<Integer> listx = UnfoldDetailsActivity.instance.getLists();
         String[] foodNames = new String[]{"拉面","火锅","章鱼烧","叉烧饭"};
 
         int s = 0;
@@ -138,7 +138,7 @@ public class SettleActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            Intent intent = new Intent(SettleActivity.this, UnfoldableDetailsActivity.class);
+            Intent intent = new Intent(SettleActivity.this, UnfoldDetailsActivity.class);
             startActivity(intent);
             finish();
         }

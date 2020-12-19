@@ -52,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
         BmobUser bmobUser = BmobUser.getCurrentUser(BmobUser.class);
         if (bmobUser != null) {
             // 允许用户使用应用
-            Intent intent = new Intent(LoginActivity.this, UnfoldableDetailsActivity.class);
+            Intent intent = new Intent(LoginActivity.this, UnfoldDetailsActivity.class);
             startActivity(intent);
             finish();
         }
@@ -92,7 +92,7 @@ public class LoginActivity extends AppCompatActivity {
                             if (e == null) {
                                 //通过BmobUser user = BmobUser.getCurrentUser()获取登录成功后的本地用户信息
                                 //如果是自定义用户对象MyUser，可通过MyUser user = BmobUser.getCurrentUser(MyUser.class)获取自定义用户信息
-                                Intent intent = new Intent(LoginActivity.this, UnfoldableDetailsActivity.class);
+                                Intent intent = new Intent(LoginActivity.this, UnfoldDetailsActivity.class);
                                 startActivity(intent);
                                 finish();
                             } else {
